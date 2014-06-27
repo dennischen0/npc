@@ -3,11 +3,12 @@
 #include "myobject.h"
 
 
-#define RADIUS 300
+#define MAX_SIZE 800
 #define N_WORDS 10
-#define FONT "Alice 17"
+#define FONT "Cookie"
 
 using namespace v8;
+using namespace std;
 
 Persistent<Function> MyObject::constructor;
 
@@ -62,12 +63,11 @@ Handle<Value> MyObject::Generate(const Arguments& args) {
   }
   std::string text(*(v8::String::Utf8Value (args[0])));
 
-  surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-                                       2 * RADIUS, 2 * RADIUS);
+  surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, MAX_SIZE, MAX_SIZE);
   cr = cairo_create (surface);
 
-  //cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
-  //cairo_paint (cr);
+  cairo_set_source_rgb (cr, 0, 0, 0);
+  cairo_paint (cr);
   draw_text(cr, text);
 
   cairo_destroy (cr);
@@ -101,35 +101,48 @@ cairo_status_t MyObject::png_to_vector(void *in_closure, const unsigned char* da
 void MyObject::draw_text(cairo_t *cr, std::string text){
   PangoLayout *layout;
   PangoFontDescription *desc;
-  cairo_translate (cr, RADIUS, RADIUS);
+  PangoRectangle ink;
+  int font_size = 17;
+  int width, height;
+  int cx, cy;
+  int count = 0;
 
+  //make pango layout and set info
   layout = pango_cairo_create_layout (cr);
-
-  //pango_layout_set_alignment(layout, PANGO_ALIGN_LEFT);
-  //pango_layout_set_wrap(layout, PANGO_WRAP_CHAR);
-
-
+  pango_layout_set_width(layout, 400 * PANGO_SCALE);
+  pango_layout_set_height(layout, 50 * PANGO_SCALE);
+  pango_layout_set_wrap(layout, PANGO_WRAP_WORD);
   pango_layout_set_text (layout, text.c_str() , -1);
+
+  //make the white box
+  cairo_set_source_rgb (cr, 1, 1, 1);
+  cairo_rectangle(cr, 182, 577, 400, 50);
+  cairo_fill (cr);
+
+  //set font description to layout
   desc = pango_font_description_from_string (FONT);
-  pango_layout_set_font_description (layout, desc);
+
+  do{
+    count++;
+    pango_font_description_set_size(desc, font_size*PANGO_SCALE);
+    pango_layout_set_font_description (layout, desc);
+
+    pango_layout_get_pixel_size(layout, &cx, &cy);
+    font_size -= 1;
+  }while(cy > 50);
   pango_font_description_free (desc);
 
-  int width, height;
-  double red;
-
-  cairo_save (cr);
-
-  cairo_set_source_rgb (cr, red, 0, 1.0 - red);
-
-
+  //set font color
+  cairo_set_source_rgb (cr, .5, .5, .5);
   pango_cairo_update_layout (cr, layout);
 
+  //print the text onto the cairo layer.
+  cairo_move_to(cr, 182, 577);
   pango_layout_get_size (layout, &width, &height);
-  cairo_move_to (cr, - ((double)width / PANGO_SCALE) / 2, - RADIUS);
   pango_cairo_show_layout (cr, layout);
-  //pango_cairo_show_layout_line (cr, pango_layout_get_line (layout, 0));
 
-
-  cairo_restore (cr);
   g_object_unref (layout);
 }
+
+
+

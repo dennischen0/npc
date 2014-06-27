@@ -18,7 +18,7 @@ function index(res, postData) {
 	'charset=UTF-8" />'+
 	'</head>'+
 	'<body>'+
-	"<img src=\"data:image/png;base64," + image + "\" />" +
+	"<img src=\"data:image/png;base64," + image + "\" height = '800' width = '800' />" +
 	'<form action="/index" method="post">'+
 	'<textarea name="text" rows="20" cols="60">' + text + '</textarea>'+
 	'<input type="submit" value="Submit text" />'+
