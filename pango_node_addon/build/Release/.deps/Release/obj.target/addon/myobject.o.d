@@ -1,256 +1,266 @@
-cmd_Release/obj.target/addon/myobject.o := g++ '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DBUILDING_NODE_EXTENSION' -I/home/scotty/.node-gyp/0.10.28/src -I/home/scotty/.node-gyp/0.10.28/deps/uv/include -I/home/scotty/.node-gyp/0.10.28/deps/v8/include -I/usr/include/pango-1.0 -I/usr/include/cairo -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12  -fPIC -Wall -Wextra -Wno-unused-parameter -pthread -m64 -O2 -fno-strict-aliasing -fno-tree-vrp -fno-omit-frame-pointer -fno-rtti -fno-exceptions -MMD -MF ./Release/.deps/Release/obj.target/addon/myobject.o.d.raw  -c -o Release/obj.target/addon/myobject.o ../myobject.cc
-Release/obj.target/addon/myobject.o: ../myobject.cc \
- /home/scotty/.node-gyp/0.10.28/src/node.h \
- /home/scotty/.node-gyp/0.10.28/deps/uv/include/uv.h \
- /home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/uv-unix.h \
- /home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/ngx-queue.h \
- /home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/uv-linux.h \
- /home/scotty/.node-gyp/0.10.28/deps/v8/include/v8.h \
- /home/scotty/.node-gyp/0.10.28/deps/v8/include/v8stdint.h \
- /home/scotty/.node-gyp/0.10.28/src/node_object_wrap.h \
- /home/scotty/.node-gyp/0.10.28/src/node.h \
- /home/scotty/.node-gyp/0.10.28/src/node_buffer.h ../myobject.h \
- /usr/include/pango-1.0/pango/pangocairo.h \
- /usr/include/pango-1.0/pango/pango.h \
- /usr/include/pango-1.0/pango/pango-attributes.h \
- /usr/include/pango-1.0/pango/pango-font.h \
- /usr/include/pango-1.0/pango/pango-coverage.h \
- /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
- /usr/include/glib-2.0/glib/gtypes.h \
- /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
- /usr/include/glib-2.0/glib/gmacros.h \
- /usr/include/glib-2.0/glib/gversionmacros.h \
- /usr/include/glib-2.0/glib/garray.h \
- /usr/include/glib-2.0/glib/gasyncqueue.h \
- /usr/include/glib-2.0/glib/gthread.h \
- /usr/include/glib-2.0/glib/gatomic.h /usr/include/glib-2.0/glib/gerror.h \
- /usr/include/glib-2.0/glib/gquark.h \
- /usr/include/glib-2.0/glib/gbacktrace.h \
- /usr/include/glib-2.0/glib/gbase64.h \
- /usr/include/glib-2.0/glib/gbitlock.h \
- /usr/include/glib-2.0/glib/gbookmarkfile.h \
- /usr/include/glib-2.0/glib/gbytes.h \
- /usr/include/glib-2.0/glib/gcharset.h \
- /usr/include/glib-2.0/glib/gchecksum.h \
- /usr/include/glib-2.0/glib/gconvert.h \
- /usr/include/glib-2.0/glib/gdataset.h /usr/include/glib-2.0/glib/gdate.h \
- /usr/include/glib-2.0/glib/gdatetime.h \
- /usr/include/glib-2.0/glib/gtimezone.h /usr/include/glib-2.0/glib/gdir.h \
- /usr/include/glib-2.0/glib/genviron.h \
- /usr/include/glib-2.0/glib/gfileutils.h \
- /usr/include/glib-2.0/glib/ggettext.h /usr/include/glib-2.0/glib/ghash.h \
- /usr/include/glib-2.0/glib/glist.h /usr/include/glib-2.0/glib/gmem.h \
- /usr/include/glib-2.0/glib/ghmac.h \
- /usr/include/glib-2.0/glib/gchecksum.h \
- /usr/include/glib-2.0/glib/ghook.h \
- /usr/include/glib-2.0/glib/ghostutils.h \
- /usr/include/glib-2.0/glib/giochannel.h \
- /usr/include/glib-2.0/glib/gmain.h /usr/include/glib-2.0/glib/gpoll.h \
- /usr/include/glib-2.0/glib/gslist.h /usr/include/glib-2.0/glib/gstring.h \
- /usr/include/glib-2.0/glib/gunicode.h \
- /usr/include/glib-2.0/glib/gutils.h \
- /usr/include/glib-2.0/glib/gkeyfile.h \
- /usr/include/glib-2.0/glib/gmappedfile.h \
- /usr/include/glib-2.0/glib/gmarkup.h \
- /usr/include/glib-2.0/glib/gmessages.h \
- /usr/include/glib-2.0/glib/gnode.h /usr/include/glib-2.0/glib/goption.h \
- /usr/include/glib-2.0/glib/gpattern.h \
- /usr/include/glib-2.0/glib/gprimes.h /usr/include/glib-2.0/glib/gqsort.h \
- /usr/include/glib-2.0/glib/gqueue.h /usr/include/glib-2.0/glib/grand.h \
- /usr/include/glib-2.0/glib/gregex.h \
- /usr/include/glib-2.0/glib/gscanner.h \
- /usr/include/glib-2.0/glib/gsequence.h \
- /usr/include/glib-2.0/glib/gshell.h /usr/include/glib-2.0/glib/gslice.h \
- /usr/include/glib-2.0/glib/gspawn.h \
- /usr/include/glib-2.0/glib/gstrfuncs.h \
- /usr/include/glib-2.0/glib/gstringchunk.h \
- /usr/include/glib-2.0/glib/gtestutils.h \
- /usr/include/glib-2.0/glib/gthreadpool.h \
- /usr/include/glib-2.0/glib/gtimer.h \
- /usr/include/glib-2.0/glib/gtrashstack.h \
- /usr/include/glib-2.0/glib/gtree.h \
- /usr/include/glib-2.0/glib/gurifuncs.h \
- /usr/include/glib-2.0/glib/gvarianttype.h \
- /usr/include/glib-2.0/glib/gvariant.h \
- /usr/include/glib-2.0/glib/gversion.h \
- /usr/include/glib-2.0/glib/deprecated/gallocator.h \
- /usr/include/glib-2.0/glib/deprecated/gcache.h \
- /usr/include/glib-2.0/glib/deprecated/gcompletion.h \
- /usr/include/glib-2.0/glib/deprecated/gmain.h \
- /usr/include/glib-2.0/glib/deprecated/grel.h \
- /usr/include/glib-2.0/glib/deprecated/gthread.h \
- /usr/include/pango-1.0/pango/pango-types.h \
- /usr/include/glib-2.0/glib-object.h \
- /usr/include/glib-2.0/gobject/gbinding.h \
- /usr/include/glib-2.0/gobject/gobject.h \
- /usr/include/glib-2.0/gobject/gtype.h \
- /usr/include/glib-2.0/gobject/gvalue.h \
- /usr/include/glib-2.0/gobject/gparam.h \
- /usr/include/glib-2.0/gobject/gclosure.h \
- /usr/include/glib-2.0/gobject/gsignal.h \
- /usr/include/glib-2.0/gobject/gmarshal.h \
- /usr/include/glib-2.0/gobject/gboxed.h \
- /usr/include/glib-2.0/gobject/glib-types.h \
- /usr/include/glib-2.0/gobject/genums.h \
- /usr/include/glib-2.0/gobject/gparamspecs.h \
- /usr/include/glib-2.0/gobject/gsourceclosure.h \
- /usr/include/glib-2.0/gobject/gtypemodule.h \
- /usr/include/glib-2.0/gobject/gtypeplugin.h \
- /usr/include/glib-2.0/gobject/gvaluearray.h \
- /usr/include/glib-2.0/gobject/gvaluetypes.h \
- /usr/include/pango-1.0/pango/pango-gravity.h \
- /usr/include/pango-1.0/pango/pango-matrix.h \
- /usr/include/pango-1.0/pango/pango-script.h \
- /usr/include/pango-1.0/pango/pango-language.h \
- /usr/include/pango-1.0/pango/pango-bidi-type.h \
- /usr/include/pango-1.0/pango/pango-break.h \
- /usr/include/pango-1.0/pango/pango-item.h \
- /usr/include/pango-1.0/pango/pango-context.h \
- /usr/include/pango-1.0/pango/pango-fontmap.h \
- /usr/include/pango-1.0/pango/pango-fontset.h \
- /usr/include/pango-1.0/pango/pango-engine.h \
- /usr/include/pango-1.0/pango/pango-glyph.h \
- /usr/include/pango-1.0/pango/pango-enum-types.h \
- /usr/include/pango-1.0/pango/pango-features.h \
- /usr/include/pango-1.0/pango/pango-glyph-item.h \
- /usr/include/pango-1.0/pango/pango-layout.h \
- /usr/include/pango-1.0/pango/pango-tabs.h \
- /usr/include/pango-1.0/pango/pango-renderer.h \
- /usr/include/pango-1.0/pango/pango-utils.h /usr/include/cairo/cairo.h \
- /usr/include/cairo/cairo-version.h /usr/include/cairo/cairo-features.h \
- /usr/include/cairo/cairo-deprecated.h
+cmd_Release/obj.target/addon/myobject.o := c++ '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DBUILDING_NODE_EXTENSION' -I/Users/panini/.node-gyp/0.10.12/src -I/Users/panini/.node-gyp/0.10.12/deps/uv/include -I/Users/panini/.node-gyp/0.10.12/deps/v8/include -I/usr/local/Cellar/cairo/1.12.16/include/cairo -I/usr/local/Cellar/pango/1.36.3/include/pango-1.0 -I/opt/X11/include/pixman-1 -I/opt/X11/include -I/opt/X11/include/freetype2 -I/opt/X11/include/libpng15 -I/usr/local/Cellar/glib/2.40.0/include/glib-2.0 -I/usr/local/Cellar/glib/2.40.0/lib/glib-2.0/include -I/usr/local/opt/gettext/include  -Os -gdwarf-2 -mmacosx-version-min=10.5 -arch x86_64 -Wall -Wendif-labels -W -Wno-unused-parameter -fno-rtti -fno-exceptions -fno-threadsafe-statics -fno-strict-aliasing -MMD -MF ./Release/.deps/Release/obj.target/addon/myobject.o.d.raw  -c -o Release/obj.target/addon/myobject.o ../myobject.cc
+Release/obj.target/addon/myobject.o: ../myobject.cc ../myobject.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pangocairo.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-attributes.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-font.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-coverage.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/galloca.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtypes.h \
+  /usr/local/Cellar/glib/2.40.0/lib/glib-2.0/include/glibconfig.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmacros.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gversionmacros.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/garray.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gasyncqueue.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gthread.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gatomic.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gerror.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gquark.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbacktrace.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbase64.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbitlock.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbookmarkfile.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbytes.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gcharset.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gchecksum.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gconvert.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdataset.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdate.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdatetime.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtimezone.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdir.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/genviron.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gfileutils.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ggettext.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghash.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/glist.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmem.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gnode.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghmac.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghook.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghostutils.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/giochannel.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmain.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gpoll.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gslist.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstring.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gunicode.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gutils.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gkeyfile.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmappedfile.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmarkup.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmessages.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/goption.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gpattern.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gprimes.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gqsort.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gqueue.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/grand.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gregex.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gscanner.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gsequence.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gshell.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gslice.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gspawn.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstrfuncs.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstringchunk.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtestutils.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gthreadpool.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtimer.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtrashstack.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtree.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gurifuncs.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gvarianttype.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gvariant.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gversion.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gallocator.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gcache.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gcompletion.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gmain.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/grel.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gthread.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-types.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib-object.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gbinding.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gobject.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtype.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvalue.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gparam.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gclosure.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gsignal.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gmarshal.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gboxed.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/glib-types.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/genums.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gparamspecs.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gsourceclosure.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtypemodule.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtypeplugin.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvaluearray.h \
+  /usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvaluetypes.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-gravity.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-matrix.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-script.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-language.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-bidi-type.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-break.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-item.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-context.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-fontmap.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-fontset.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-engine.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-glyph.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-enum-types.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-features.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-glyph-item.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-layout.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-tabs.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-renderer.h \
+  /usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-utils.h \
+  /usr/local/Cellar/cairo/1.12.16/include/cairo/cairo.h \
+  /usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-version.h \
+  /usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-features.h \
+  /usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-deprecated.h \
+  /Users/panini/.node-gyp/0.10.12/src/node.h \
+  /Users/panini/.node-gyp/0.10.12/deps/uv/include/uv.h \
+  /Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/uv-unix.h \
+  /Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/ngx-queue.h \
+  /Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/uv-darwin.h \
+  /Users/panini/.node-gyp/0.10.12/deps/v8/include/v8.h \
+  /Users/panini/.node-gyp/0.10.12/deps/v8/include/v8stdint.h \
+  /Users/panini/.node-gyp/0.10.12/src/node_object_wrap.h \
+  /Users/panini/.node-gyp/0.10.12/src/node_buffer.h
 ../myobject.cc:
-/home/scotty/.node-gyp/0.10.28/src/node.h:
-/home/scotty/.node-gyp/0.10.28/deps/uv/include/uv.h:
-/home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/uv-unix.h:
-/home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/ngx-queue.h:
-/home/scotty/.node-gyp/0.10.28/deps/uv/include/uv-private/uv-linux.h:
-/home/scotty/.node-gyp/0.10.28/deps/v8/include/v8.h:
-/home/scotty/.node-gyp/0.10.28/deps/v8/include/v8stdint.h:
-/home/scotty/.node-gyp/0.10.28/src/node_object_wrap.h:
-/home/scotty/.node-gyp/0.10.28/src/node.h:
-/home/scotty/.node-gyp/0.10.28/src/node_buffer.h:
 ../myobject.h:
-/usr/include/pango-1.0/pango/pangocairo.h:
-/usr/include/pango-1.0/pango/pango.h:
-/usr/include/pango-1.0/pango/pango-attributes.h:
-/usr/include/pango-1.0/pango/pango-font.h:
-/usr/include/pango-1.0/pango/pango-coverage.h:
-/usr/include/glib-2.0/glib.h:
-/usr/include/glib-2.0/glib/galloca.h:
-/usr/include/glib-2.0/glib/gtypes.h:
-/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:
-/usr/include/glib-2.0/glib/gmacros.h:
-/usr/include/glib-2.0/glib/gversionmacros.h:
-/usr/include/glib-2.0/glib/garray.h:
-/usr/include/glib-2.0/glib/gasyncqueue.h:
-/usr/include/glib-2.0/glib/gthread.h:
-/usr/include/glib-2.0/glib/gatomic.h:
-/usr/include/glib-2.0/glib/gerror.h:
-/usr/include/glib-2.0/glib/gquark.h:
-/usr/include/glib-2.0/glib/gbacktrace.h:
-/usr/include/glib-2.0/glib/gbase64.h:
-/usr/include/glib-2.0/glib/gbitlock.h:
-/usr/include/glib-2.0/glib/gbookmarkfile.h:
-/usr/include/glib-2.0/glib/gbytes.h:
-/usr/include/glib-2.0/glib/gcharset.h:
-/usr/include/glib-2.0/glib/gchecksum.h:
-/usr/include/glib-2.0/glib/gconvert.h:
-/usr/include/glib-2.0/glib/gdataset.h:
-/usr/include/glib-2.0/glib/gdate.h:
-/usr/include/glib-2.0/glib/gdatetime.h:
-/usr/include/glib-2.0/glib/gtimezone.h:
-/usr/include/glib-2.0/glib/gdir.h:
-/usr/include/glib-2.0/glib/genviron.h:
-/usr/include/glib-2.0/glib/gfileutils.h:
-/usr/include/glib-2.0/glib/ggettext.h:
-/usr/include/glib-2.0/glib/ghash.h:
-/usr/include/glib-2.0/glib/glist.h:
-/usr/include/glib-2.0/glib/gmem.h:
-/usr/include/glib-2.0/glib/ghmac.h:
-/usr/include/glib-2.0/glib/gchecksum.h:
-/usr/include/glib-2.0/glib/ghook.h:
-/usr/include/glib-2.0/glib/ghostutils.h:
-/usr/include/glib-2.0/glib/giochannel.h:
-/usr/include/glib-2.0/glib/gmain.h:
-/usr/include/glib-2.0/glib/gpoll.h:
-/usr/include/glib-2.0/glib/gslist.h:
-/usr/include/glib-2.0/glib/gstring.h:
-/usr/include/glib-2.0/glib/gunicode.h:
-/usr/include/glib-2.0/glib/gutils.h:
-/usr/include/glib-2.0/glib/gkeyfile.h:
-/usr/include/glib-2.0/glib/gmappedfile.h:
-/usr/include/glib-2.0/glib/gmarkup.h:
-/usr/include/glib-2.0/glib/gmessages.h:
-/usr/include/glib-2.0/glib/gnode.h:
-/usr/include/glib-2.0/glib/goption.h:
-/usr/include/glib-2.0/glib/gpattern.h:
-/usr/include/glib-2.0/glib/gprimes.h:
-/usr/include/glib-2.0/glib/gqsort.h:
-/usr/include/glib-2.0/glib/gqueue.h:
-/usr/include/glib-2.0/glib/grand.h:
-/usr/include/glib-2.0/glib/gregex.h:
-/usr/include/glib-2.0/glib/gscanner.h:
-/usr/include/glib-2.0/glib/gsequence.h:
-/usr/include/glib-2.0/glib/gshell.h:
-/usr/include/glib-2.0/glib/gslice.h:
-/usr/include/glib-2.0/glib/gspawn.h:
-/usr/include/glib-2.0/glib/gstrfuncs.h:
-/usr/include/glib-2.0/glib/gstringchunk.h:
-/usr/include/glib-2.0/glib/gtestutils.h:
-/usr/include/glib-2.0/glib/gthreadpool.h:
-/usr/include/glib-2.0/glib/gtimer.h:
-/usr/include/glib-2.0/glib/gtrashstack.h:
-/usr/include/glib-2.0/glib/gtree.h:
-/usr/include/glib-2.0/glib/gurifuncs.h:
-/usr/include/glib-2.0/glib/gvarianttype.h:
-/usr/include/glib-2.0/glib/gvariant.h:
-/usr/include/glib-2.0/glib/gversion.h:
-/usr/include/glib-2.0/glib/deprecated/gallocator.h:
-/usr/include/glib-2.0/glib/deprecated/gcache.h:
-/usr/include/glib-2.0/glib/deprecated/gcompletion.h:
-/usr/include/glib-2.0/glib/deprecated/gmain.h:
-/usr/include/glib-2.0/glib/deprecated/grel.h:
-/usr/include/glib-2.0/glib/deprecated/gthread.h:
-/usr/include/pango-1.0/pango/pango-types.h:
-/usr/include/glib-2.0/glib-object.h:
-/usr/include/glib-2.0/gobject/gbinding.h:
-/usr/include/glib-2.0/gobject/gobject.h:
-/usr/include/glib-2.0/gobject/gtype.h:
-/usr/include/glib-2.0/gobject/gvalue.h:
-/usr/include/glib-2.0/gobject/gparam.h:
-/usr/include/glib-2.0/gobject/gclosure.h:
-/usr/include/glib-2.0/gobject/gsignal.h:
-/usr/include/glib-2.0/gobject/gmarshal.h:
-/usr/include/glib-2.0/gobject/gboxed.h:
-/usr/include/glib-2.0/gobject/glib-types.h:
-/usr/include/glib-2.0/gobject/genums.h:
-/usr/include/glib-2.0/gobject/gparamspecs.h:
-/usr/include/glib-2.0/gobject/gsourceclosure.h:
-/usr/include/glib-2.0/gobject/gtypemodule.h:
-/usr/include/glib-2.0/gobject/gtypeplugin.h:
-/usr/include/glib-2.0/gobject/gvaluearray.h:
-/usr/include/glib-2.0/gobject/gvaluetypes.h:
-/usr/include/pango-1.0/pango/pango-gravity.h:
-/usr/include/pango-1.0/pango/pango-matrix.h:
-/usr/include/pango-1.0/pango/pango-script.h:
-/usr/include/pango-1.0/pango/pango-language.h:
-/usr/include/pango-1.0/pango/pango-bidi-type.h:
-/usr/include/pango-1.0/pango/pango-break.h:
-/usr/include/pango-1.0/pango/pango-item.h:
-/usr/include/pango-1.0/pango/pango-context.h:
-/usr/include/pango-1.0/pango/pango-fontmap.h:
-/usr/include/pango-1.0/pango/pango-fontset.h:
-/usr/include/pango-1.0/pango/pango-engine.h:
-/usr/include/pango-1.0/pango/pango-glyph.h:
-/usr/include/pango-1.0/pango/pango-enum-types.h:
-/usr/include/pango-1.0/pango/pango-features.h:
-/usr/include/pango-1.0/pango/pango-glyph-item.h:
-/usr/include/pango-1.0/pango/pango-layout.h:
-/usr/include/pango-1.0/pango/pango-tabs.h:
-/usr/include/pango-1.0/pango/pango-renderer.h:
-/usr/include/pango-1.0/pango/pango-utils.h:
-/usr/include/cairo/cairo.h:
-/usr/include/cairo/cairo-version.h:
-/usr/include/cairo/cairo-features.h:
-/usr/include/cairo/cairo-deprecated.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pangocairo.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-attributes.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-font.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-coverage.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/galloca.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtypes.h:
+/usr/local/Cellar/glib/2.40.0/lib/glib-2.0/include/glibconfig.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmacros.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gversionmacros.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/garray.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gasyncqueue.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gthread.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gatomic.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gerror.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gquark.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbacktrace.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbase64.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbitlock.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbookmarkfile.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gbytes.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gcharset.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gchecksum.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gconvert.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdataset.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdate.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdatetime.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtimezone.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gdir.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/genviron.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gfileutils.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ggettext.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghash.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/glist.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmem.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gnode.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghmac.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghook.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/ghostutils.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/giochannel.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmain.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gpoll.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gslist.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstring.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gunicode.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gutils.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gkeyfile.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmappedfile.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmarkup.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gmessages.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/goption.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gpattern.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gprimes.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gqsort.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gqueue.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/grand.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gregex.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gscanner.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gsequence.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gshell.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gslice.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gspawn.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstrfuncs.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gstringchunk.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtestutils.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gthreadpool.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtimer.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtrashstack.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gtree.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gurifuncs.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gvarianttype.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gvariant.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/gversion.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gallocator.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gcache.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gcompletion.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gmain.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/grel.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib/deprecated/gthread.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-types.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/glib-object.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gbinding.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gobject.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtype.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvalue.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gparam.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gclosure.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gsignal.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gmarshal.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gboxed.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/glib-types.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/genums.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gparamspecs.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gsourceclosure.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtypemodule.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gtypeplugin.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvaluearray.h:
+/usr/local/Cellar/glib/2.40.0/include/glib-2.0/gobject/gvaluetypes.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-gravity.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-matrix.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-script.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-language.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-bidi-type.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-break.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-item.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-context.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-fontmap.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-fontset.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-engine.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-glyph.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-enum-types.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-features.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-glyph-item.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-layout.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-tabs.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-renderer.h:
+/usr/local/Cellar/pango/1.36.3/include/pango-1.0/pango/pango-utils.h:
+/usr/local/Cellar/cairo/1.12.16/include/cairo/cairo.h:
+/usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-version.h:
+/usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-features.h:
+/usr/local/Cellar/cairo/1.12.16/include/cairo/cairo-deprecated.h:
+/Users/panini/.node-gyp/0.10.12/src/node.h:
+/Users/panini/.node-gyp/0.10.12/deps/uv/include/uv.h:
+/Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/uv-unix.h:
+/Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/ngx-queue.h:
+/Users/panini/.node-gyp/0.10.12/deps/uv/include/uv-private/uv-darwin.h:
+/Users/panini/.node-gyp/0.10.12/deps/v8/include/v8.h:
+/Users/panini/.node-gyp/0.10.12/deps/v8/include/v8stdint.h:
+/Users/panini/.node-gyp/0.10.12/src/node_object_wrap.h:
+/Users/panini/.node-gyp/0.10.12/src/node_buffer.h:

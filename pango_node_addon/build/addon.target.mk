@@ -3,6 +3,7 @@
 TOOLSET := target
 TARGET := addon
 DEFS_Debug := \
+	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DBUILDING_NODE_EXTENSION' \
@@ -11,72 +12,93 @@ DEFS_Debug := \
 
 # Flags passed to all source files.
 CFLAGS_Debug := \
-	-fPIC \
+	-O0 \
+	-gdwarf-2 \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
 	-Wall \
-	-Wextra \
-	-Wno-unused-parameter \
-	-pthread \
-	-m64 \
-	-g \
-	-O0
+	-Wendif-labels \
+	-W \
+	-Wno-unused-parameter
 
 # Flags passed to only C files.
-CFLAGS_C_Debug :=
+CFLAGS_C_Debug := \
+	-fno-strict-aliasing
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
 	-fno-rtti \
-	-fno-exceptions
+	-fno-exceptions \
+	-fno-threadsafe-statics \
+	-fno-strict-aliasing
+
+# Flags passed to only ObjC files.
+CFLAGS_OBJC_Debug :=
+
+# Flags passed to only ObjC++ files.
+CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/home/scotty/.node-gyp/0.10.28/src \
-	-I/home/scotty/.node-gyp/0.10.28/deps/uv/include \
-	-I/home/scotty/.node-gyp/0.10.28/deps/v8/include \
-	-I/usr/include/pango-1.0 \
-	-I/usr/include/cairo \
-	-I/usr/include/glib-2.0 \
-	-I/usr/lib/x86_64-linux-gnu/glib-2.0/include \
-	-I/usr/include/pixman-1 \
-	-I/usr/include/freetype2 \
-	-I/usr/include/libpng12
+	-I/Users/panini/.node-gyp/0.10.12/src \
+	-I/Users/panini/.node-gyp/0.10.12/deps/uv/include \
+	-I/Users/panini/.node-gyp/0.10.12/deps/v8/include \
+	-I/usr/local/Cellar/cairo/1.12.16/include/cairo \
+	-I/usr/local/Cellar/pango/1.36.3/include/pango-1.0 \
+	-I/opt/X11/include/pixman-1 \
+	-I/opt/X11/include \
+	-I/opt/X11/include/freetype2 \
+	-I/opt/X11/include/libpng15 \
+	-I/usr/local/Cellar/glib/2.40.0/include/glib-2.0 \
+	-I/usr/local/Cellar/glib/2.40.0/lib/glib-2.0/include \
+	-I/usr/local/opt/gettext/include
 
 DEFS_Release := \
+	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
 CFLAGS_Release := \
-	-fPIC \
+	-Os \
+	-gdwarf-2 \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
 	-Wall \
-	-Wextra \
-	-Wno-unused-parameter \
-	-pthread \
-	-m64 \
-	-O2 \
-	-fno-strict-aliasing \
-	-fno-tree-vrp \
-	-fno-omit-frame-pointer
+	-Wendif-labels \
+	-W \
+	-Wno-unused-parameter
 
 # Flags passed to only C files.
-CFLAGS_C_Release :=
+CFLAGS_C_Release := \
+	-fno-strict-aliasing
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
 	-fno-rtti \
-	-fno-exceptions
+	-fno-exceptions \
+	-fno-threadsafe-statics \
+	-fno-strict-aliasing
+
+# Flags passed to only ObjC files.
+CFLAGS_OBJC_Release :=
+
+# Flags passed to only ObjC++ files.
+CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/home/scotty/.node-gyp/0.10.28/src \
-	-I/home/scotty/.node-gyp/0.10.28/deps/uv/include \
-	-I/home/scotty/.node-gyp/0.10.28/deps/v8/include \
-	-I/usr/include/pango-1.0 \
-	-I/usr/include/cairo \
-	-I/usr/include/glib-2.0 \
-	-I/usr/lib/x86_64-linux-gnu/glib-2.0/include \
-	-I/usr/include/pixman-1 \
-	-I/usr/include/freetype2 \
-	-I/usr/include/libpng12
+	-I/Users/panini/.node-gyp/0.10.12/src \
+	-I/Users/panini/.node-gyp/0.10.12/deps/uv/include \
+	-I/Users/panini/.node-gyp/0.10.12/deps/v8/include \
+	-I/usr/local/Cellar/cairo/1.12.16/include/cairo \
+	-I/usr/local/Cellar/pango/1.36.3/include/pango-1.0 \
+	-I/opt/X11/include/pixman-1 \
+	-I/opt/X11/include \
+	-I/opt/X11/include/freetype2 \
+	-I/opt/X11/include/libpng15 \
+	-I/usr/local/Cellar/glib/2.40.0/include/glib-2.0 \
+	-I/usr/local/Cellar/glib/2.40.0/lib/glib-2.0/include \
+	-I/usr/local/opt/gettext/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/addon.o \
@@ -90,6 +112,8 @@ all_deps += $(OBJS)
 $(OBJS): TOOLSET := $(TOOLSET)
 $(OBJS): GYP_CFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE))
 $(OBJS): GYP_CXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE))
+$(OBJS): GYP_OBJCFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE)) $(CFLAGS_OBJC_$(BUILDTYPE))
+$(OBJS): GYP_OBJCXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE)) $(CFLAGS_OBJCC_$(BUILDTYPE))
 
 # Suffix rules, putting all outputs into $(obj).
 
@@ -107,42 +131,51 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 # End of this set of suffix rules
 ### Rules for final target.
 LDFLAGS_Debug := \
-	-pthread \
-	-rdynamic \
-	-m64
+	-Wl,-search_paths_first \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
+	-L$(builddir)
+
+LIBTOOLFLAGS_Debug := \
+	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
-	-pthread \
-	-rdynamic \
-	-m64
+	-Wl,-search_paths_first \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
+	-L$(builddir)
+
+LIBTOOLFLAGS_Release := \
+	-Wl,-search_paths_first
 
 LIBS := \
+	-undefined dynamic_lookup \
+	-L/usr/local/Cellar/cairo/1.12.16/lib \
 	-lcairo \
+	-L/usr/local/Cellar/pango/1.36.3/lib \
+	-L/usr/local/Cellar/glib/2.40.0/lib \
+	-L/usr/local/opt/gettext/lib \
 	-lpango-1.0 \
 	-lgobject-2.0 \
 	-lglib-2.0 \
+	-lintl \
 	-lpangocairo-1.0
 
-$(obj).target/addon.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
-$(obj).target/addon.node: LIBS := $(LIBS)
-$(obj).target/addon.node: TOOLSET := $(TOOLSET)
-$(obj).target/addon.node: $(OBJS) FORCE_DO_CMD
+$(builddir)/addon.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
+$(builddir)/addon.node: LIBS := $(LIBS)
+$(builddir)/addon.node: GYP_LIBTOOLFLAGS := $(LIBTOOLFLAGS_$(BUILDTYPE))
+$(builddir)/addon.node: TOOLSET := $(TOOLSET)
+$(builddir)/addon.node: $(OBJS) FORCE_DO_CMD
 	$(call do_cmd,solink_module)
 
-all_deps += $(obj).target/addon.node
+all_deps += $(builddir)/addon.node
 # Add target alias
 .PHONY: addon
 addon: $(builddir)/addon.node
 
-# Copy this to the executable output path.
-$(builddir)/addon.node: TOOLSET := $(TOOLSET)
-$(builddir)/addon.node: $(obj).target/addon.node FORCE_DO_CMD
-	$(call do_cmd,copy)
-
-all_deps += $(builddir)/addon.node
 # Short alias for building this executable.
 .PHONY: addon.node
-addon.node: $(obj).target/addon.node $(builddir)/addon.node
+addon.node: $(builddir)/addon.node
 
 # Add executable to "all" target.
 .PHONY: all
