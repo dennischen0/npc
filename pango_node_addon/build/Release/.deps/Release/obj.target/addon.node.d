@@ -1,1 +1,0 @@
-cmd_Release/obj.target/addon.node := flock ./Release/linker.lock g++ -shared -pthread -rdynamic -m64  -Wl,-soname=addon.node -o Release/obj.target/addon.node -Wl,--start-group Release/obj.target/addon/addon.o Release/obj.target/addon/myobject.o -Wl,--end-group -lcairo -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lpangocairo-1.0
