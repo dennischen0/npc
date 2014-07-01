@@ -1,4 +1,4 @@
-#define BUILDING_NODE_EXTENSION
+//#define BUILDING_NODE_EXTENSION
 
 #include "myobject.h"
 
@@ -45,10 +45,9 @@ Handle<Value> MyObject::New(const Arguments& args) {
 }
 Handle<Value> MyObject::Generate(const Arguments& args) {
   HandleScope scope;
-  MyObject* obj = ObjectWrap::Unwrap<MyObject>(args.This());
 
   cairo_t *cr;
-  cairo_status_t status;
+  //cairo_status_t status;
   cairo_surface_t *surface;
   //char *filename;
   //filename = "image.png";
@@ -73,7 +72,8 @@ Handle<Value> MyObject::Generate(const Arguments& args) {
   cairo_destroy (cr);
 
   std::vector<unsigned char> png_vector;
-  status = cairo_surface_write_to_png_stream ( surface, png_to_vector, &png_vector);
+  //status = cairo_surface_write_to_png_stream ( surface, png_to_vector, &png_vector);
+  cairo_surface_write_to_png_stream ( surface, png_to_vector, &png_vector);
   cairo_surface_destroy (surface);
 
   int size = png_vector.size();
@@ -101,7 +101,6 @@ cairo_status_t MyObject::png_to_vector(void *in_closure, const unsigned char* da
 void MyObject::draw_text(cairo_t *cr, std::string text){
   PangoLayout *layout;
   PangoFontDescription *desc;
-  PangoRectangle ink;
   int font_size = 17;
   int width, height;
   int cx, cy;
@@ -122,14 +121,15 @@ void MyObject::draw_text(cairo_t *cr, std::string text){
   //set font description to layout
   desc = pango_font_description_from_string (FONT);
 
-  do{
+  //do{
     count++;
     pango_font_description_set_size(desc, font_size*PANGO_SCALE);
     pango_layout_set_font_description (layout, desc);
 
     pango_layout_get_pixel_size(layout, &cx, &cy);
     font_size -= 1;
-  }while(cy > 50);
+  //}while(cy > 50);
+  //cout << count << endl;
   pango_font_description_free (desc);
 
   //set font color
