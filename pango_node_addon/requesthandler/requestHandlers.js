@@ -4,7 +4,7 @@ var querystring = require("querystring");
 
 //node addons
 var addon = require('./build/Release/addon');
-var obj = new addon.MyObject();
+var obj = new addon.TextGenerate();
 
 function index(res, postData) {
 	console.log("Request handler for 'index' was called.");

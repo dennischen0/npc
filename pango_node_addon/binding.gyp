@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "addon",
-      "sources": [ "addon.cc", "myobject.cc" ],
+      "sources": [ "addon.cc", "textgenerate.cc" ],
       # 'ldflags': [
       # 	'<!@(pkg-config --libs gtkmm-3.0 pango cairo)'
       # ],
