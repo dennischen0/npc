@@ -4,7 +4,6 @@
 
 
 #define MAX_SIZE 800
-#define N_WORDS 10
 #define FONT "Cookie"
 
 using namespace v8;
@@ -56,18 +55,15 @@ Handle<Value> MyObject::Generate(const Arguments& args) {
     ThrowException(Exception::TypeError(String::New("Wrong number of arguments")));
     return scope.Close(Undefined());
   }
-  if(!args[0]->IsString()){
-    ThrowException(Exception::TypeError(String::New("Wrong arguments")));
-    return scope.Close(Undefined());
-  }
-  std::string text(*(v8::String::Utf8Value (args[0])));
+  Handle<Object> obj = Handle<Object>::Cast(args[0]);
+
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, MAX_SIZE, MAX_SIZE);
   cr = cairo_create (surface);
 
   cairo_set_source_rgb (cr, 0, 0, 0);
   cairo_paint (cr);
-  draw_text(cr, text);
+  draw_text(cr, obj);
 
   cairo_destroy (cr);
 
@@ -98,37 +94,56 @@ cairo_status_t MyObject::png_to_vector(void *in_closure, const unsigned char* da
   return CAIRO_STATUS_SUCCESS;
 }
 
-void MyObject::draw_text(cairo_t *cr, std::string text){
+void MyObject::draw_text(cairo_t *cr, Handle<Object> obj){
   PangoLayout *layout;
   PangoFontDescription *desc;
-  int font_size = 17;
+  //PangoContext * context;
+  std::string text(*(v8::String::Utf8Value (obj->Get(String::New("message")))));
+  std::string font(*(v8::String::Utf8Value (obj->Get(String::New("font")))));
+  std::string font_color(*(v8::String::Utf8Value (obj->Get(String::New("font_color")))));
+  int font_size = obj->Get(String::New("font_size"))->NumberValue();//40;//args[2]->NumberValue();
+  int text_width = obj->Get(String::New("width"))->NumberValue();
+  int text_height = obj->Get(String::New("height"))->NumberValue();
+  int text_origin_x = obj->Get(String::New("origin_x"))->NumberValue();
+  int text_origin_y = obj->Get(String::New("origin_y"))->NumberValue();
+
+  double r;
+  double g;
+  double b;
+
+  hex_string_to_rgb(font_color, r, g, b);
+
   int width, height;
   int cx, cy;
   int count = 0;
 
   //make pango layout and set info
   layout = pango_cairo_create_layout (cr);
-  pango_layout_set_width(layout, 400 * PANGO_SCALE);
-  pango_layout_set_height(layout, 50 * PANGO_SCALE);
+  pango_layout_set_width(layout, text_width * PANGO_SCALE);
+  pango_layout_set_height(layout, text_height * PANGO_SCALE);
   pango_layout_set_wrap(layout, PANGO_WRAP_WORD);
   pango_layout_set_text (layout, text.c_str() , -1);
 
+  //dpi
+  // context = pango_cairo_create_context(cr);
+  // pango_cairo_context_set_resolution(context, 300);
+
   //make the white box
   cairo_set_source_rgb (cr, 1, 1, 1);
-  cairo_rectangle(cr, 182, 577, 400, 50);
+  cairo_rectangle(cr, text_origin_x, text_origin_y, text_width, text_height);
   cairo_fill (cr);
 
   //set font description to layout
-  desc = pango_font_description_from_string (FONT);
+  desc = pango_font_description_from_string (font.c_str());
 
-  //do{
+  do{
     count++;
     pango_font_description_set_size(desc, font_size*PANGO_SCALE);
     pango_layout_set_font_description (layout, desc);
 
     pango_layout_get_pixel_size(layout, &cx, &cy);
     font_size -= 1;
-  //}while(cy > 50);
+  }while(cy > text_height || cx > text_width);
   //cout << count << endl;
   pango_font_description_free (desc);
 
@@ -137,12 +152,21 @@ void MyObject::draw_text(cairo_t *cr, std::string text){
   pango_cairo_update_layout (cr, layout);
 
   //print the text onto the cairo layer.
-  cairo_move_to(cr, 182, 577);
+  cairo_move_to(cr, text_origin_x, text_origin_y);
   pango_layout_get_size (layout, &width, &height);
   pango_cairo_show_layout (cr, layout);
 
   g_object_unref (layout);
 }
 
+void MyObject::hex_string_to_rgb(std::string hex, double &r, double &g, double &b){
 
+  std::stringstream ss("123456");
+  int num;
+  ss >> hex >> num;
+  int ir = num / 0x10000;
+  int ig = (num / 0x100) % 0x100;
+  int ib = num % 0x100;
 
+  cout << std::hex << ir << endl;
+}

@@ -1,6 +1,8 @@
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
+#include <iomanip>
+#include <sstream>
 #include <string.h>
 #include <vector>
 #include <stdio.h>
@@ -23,7 +25,8 @@ private:
     
     static v8::Handle<v8::Value> New(const v8::Arguments& args);
     static v8::Handle<v8::Value> Generate(const v8::Arguments& args);
-    static void draw_text(cairo_t *cr, std::string text);
+    static void draw_text(cairo_t *cr, v8::Handle<v8::Object> obj);
+    static void hex_string_to_rgb(std::string, double&, double&, double&);
     static cairo_status_t png_to_vector(void *closure, const unsigned char* data, unsigned int length);
 	static v8::Persistent<v8::Function> constructor;
 };
