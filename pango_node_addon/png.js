@@ -17,21 +17,67 @@ http.createServer(function (req, res) {
 		var params = urlLib.parse(req.url,true);
 	    q = params.query;
 
+
+    	message = (q.message) ? q.message : "This is a message";
+    	m_font = (q.m_font) ? q.m_font : "Alice";
+    	m_font_color = (q.m_font_color) ? q.m_font_color : "ef5389";
+    	m_width = (q.m_width) ? q.m_width : "1137";
+    	m_height = (q.m_height) ? q.m_height : "345";
+    	m_font_size = (q.m_font_size) ? q.m_font_size : "17";
+    	m_x_offset = (q.m_x_offset) ? q.m_x_offset : "182";
+    	m_y_offset = (q.m_y_offset) ? q.m_y_offset : "577";
+
+    	sender = (q.sender) ? q.sender : "Sender";
+    	s_font = (q.s_font) ? q.s_font : "Alice";
+    	s_font_color = (q.s_font_color) ? q.s_font_color : "ef5389";
+    	s_width = (q.s_width) ? q.s_width : "1137";
+    	s_height = (q.s_height) ? q.s_height : "108";
+    	s_font_size = (q.s_font_size) ? q.s_font_size : "16";
+    	s_x_offset = (q.s_x_offset) ? q.s_x_offset : "182";
+    	s_y_offset = (q.s_y_offset) ? q.s_y_offset : "938";
+
+    	recipient = (q.recipient) ? q.recipient : "Recipient";
+    	r_font = (q.r_font) ? q.r_font : "Alice";
+    	r_font_color = (q.r_font_color) ? q.r_font_color : "ef5389";
+    	r_width = (q.r_width) ? q.r_width : "1133";
+    	r_height = (q.r_height) ? q.r_height : "98";
+    	r_font_size = (q.r_font_size) ? q.r_font_size : "16";
+    	r_x_offset = (q.r_x_offset) ? q.r_x_offset : "182";
+    	r_y_offset = (q.r_y_offset) ? q.r_y_offset : "461";
+
+
 	    var values = { 
-	    	message: q.message,
-	    	m_font: q.m_font,
-	    	m_width: q.m_width,
-	    	m_height: q.m_height,
-	    	m_font_size: q.m_font_size,
-	    	m_font_color: q.m_font_color,
-	    	m_x_offset: q.m_x_offset,
-	    	m_y_offset: q.m_y_offset
+	    	message: message,
+	    	m_font: m_font,
+	    	m_font_color: m_font_color,
+	    	m_width: m_width,
+	    	m_height: m_height,
+	    	m_font_size: m_font_size,
+	    	m_x_offset: m_x_offset,
+	    	m_y_offset: m_y_offset,
+	    	recipient: recipient,
+	    	r_font: r_font,
+	    	r_font_color: r_font_color,
+	    	r_width: r_width,
+	    	r_height: r_height,
+	    	r_font_size: r_font_size,
+	    	r_x_offset: r_x_offset,
+	    	r_y_offset: r_y_offset,
+	    	sender: sender,
+	    	s_font: s_font,
+	    	s_font_color: s_font_color,
+	    	s_width: s_width,
+	    	s_height: s_height,
+	    	s_font_size: s_font_size,
+	    	s_x_offset: s_x_offset,
+	    	s_y_offset: s_y_offset
 	    }
 	    //console.log(q.width);
 
 	    var qstring = querystring.stringify(values)
 
-		var body ='<html>'+
+		var body =
+		'<html>'+
 		'<head>'+
 		'<meta http-equiv="Content-Type" content="text/html; '+
 		'charset=UTF-8" />'+
@@ -40,6 +86,7 @@ http.createServer(function (req, res) {
 		'<link rel="stylesheet" href="/custom.css">'+
 		'<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>'+
 		'<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>'+
+				'<script src="/custom.js"></script>'+
 		'</head>'+
 		'<body>'+
 		'<div class="site-wrapper">'+
@@ -50,13 +97,8 @@ http.createServer(function (req, res) {
 						'<p class="lead">'+
 							'<div class= "container">'+
 								'<div class= "row">'+
-									'<div class = "col-md-8">'+
-									'<div id="wrapper">'+
-										"<img src='/testpng.png' class='img-responsive' id='image2'/>"+
-										"<img src='/generateTextLayer?" + qstring + "' class='img-responsive' id='image1' />" +
-									'</div>'+
-									'</div>'+
 									'<div class = "col-md-4">'+
+									'<div id="wrapper">'+
 										'<form role="form" action="/" method="get">'+
 											'<ul id="tabs" class="nav nav-tabs" role="tablist">'+
 												'<li class="active"><a href="#message" role="tab" data-toggle="tab">Message</a></li>'+
@@ -67,7 +109,7 @@ http.createServer(function (req, res) {
 												'<div class="tab-pane active" id="message">'+
 													'<div class="form-group">'+
 														'<label for="message">Message</label>'+
-														'<textarea name="message" class="form-control" placeholder="Enter message">'+q.message+'</textarea>'+
+														'<textarea name="message" class="form-control" placeholder="Enter message">'+message+'</textarea>'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_font">Font</label>'+
@@ -82,33 +124,33 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_font_size">Font Size</label>'+
-														'<input type="number" name="m_font_size" class="form-control" value="' + q.m_font_size + '">'+
+														'<input type="number" name="m_font_size" class="form-control" value="' + m_font_size + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_font_color">Font Color</label>'+
-														'<input type="text" name="m_font_color" class="form-control" value="' + q.m_font_color + '">'+
+														'<input type="text" name="m_font_color" class="form-control" value="' + m_font_color + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_width">Width</label>'+
-														'<input type="number" name="m_width" class="form-control" value="' + q.m_width + '">'+
+														'<input type="number" name="m_width" class="form-control" value="' + m_width + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_height">Height</label>'+
-														'<input type="number" name="m_height" class="form-control" value="' + q.m_height + '">'+
+														'<input type="number" name="m_height" class="form-control" value="' + m_height + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_x_offset">Origin X</label>'+
-														'<input type="number" name="m_x_offset" class="form-control" value="' + q.m_x_offset + '">'+
+														'<input type="number" name="m_x_offset" class="form-control" value="' + m_x_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_y_offset">Origin Y</label>'+
-														'<input type="number" name="m_y_offset" class="form-control" value="' + q.m_y_offset + '">'+
+														'<input type="number" name="m_y_offset" class="form-control" value="' + m_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="sender">'+
 													'<div class="form-group">'+
 														'<label for="sender">Sender</label>'+
-														'<input type="text" name="sender" class="form-control" value="' + q.sender+ '">'+
+														'<input type="text" name="sender" class="form-control" value="' + sender+ '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_font">Font</label>'+
@@ -123,33 +165,33 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_font_size">Font Size</label>'+
-														'<input type="number" name="s_font_size" class="form-control" value="' + q.s_font_size + '">'+
+														'<input type="number" name="s_font_size" class="form-control" value="' + s_font_size + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_font_color">Font Color</label>'+
-														'<input type="text" name="s_font_color" class="form-control" value="' + q.s_font_color + '">'+
+														'<input type="text" name="s_font_color" class="form-control" value="' + s_font_color + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_width">Width</label>'+
-														'<input type="number" name="s_width" class="form-control" value="' + q.s_width+ '">'+
+														'<input type="number" name="s_width" class="form-control" value="' + s_width+ '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_height">Height</label>'+
-														'<input type="number" name="s_height" class="form-control" value="' + q.s_height +'">'+
+														'<input type="number" name="s_height" class="form-control" value="' + s_height +'">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_x_offset">Origin X</label>'+
-														'<input type="number" name="s_x_offset" class="form-control" value="' + q.s_x_offset + '">'+
+														'<input type="number" name="s_x_offset" class="form-control" value="' + s_x_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_y_offset">Origin Y</label>'+
-														'<input type="number" name="s_y_offset" class="form-control" value="' + q.s_y_offset + '">'+
+														'<input type="number" name="s_y_offset" class="form-control" value="' + s_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="recipient">'+
 													'<div class="form-group">'+
 														'<label for="recipient">Recipient</label>'+
-														'<input type="text" name="recipient" class="form-control" value="' + q.recipient+ '">'+
+														'<input type="text" name="recipient" class="form-control" value="' + recipient+ '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_font">Font</label>'+
@@ -164,32 +206,39 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_font_size">Font Size</label>'+
-														'<input type="number" name="r_font_size" class="form-control" value="' + q.r_font_size + '">'+
+														'<input type="number" name="r_font_size" class="form-control" value="' + r_font_size + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_font_color">Font Color</label>'+
-														'<input type="text" name="r_font_color" class="form-control" value="' + q.r_font_color + '">'+
+														'<input type="text" name="r_font_color" class="form-control" value="' + r_font_color + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_width">Width</label>'+
-														'<input type="number" name="r_width" class="form-control" value="' + q.r_width+ '">'+
+														'<input type="number" name="r_width" class="form-control" value="' + r_width+ '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_height">Height</label>'+
-														'<input type="number" name="r_height" class="form-control" value="' + q.r_height +'">'+
+														'<input type="number" name="r_height" class="form-control" value="' + r_height +'">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_x_offset">Origin X</label>'+
-														'<input type="number" name="r_x_offset" class="form-control" value="' + q.r_x_offset + '">'+
+														'<input type="number" name="r_x_offset" class="form-control" value="' + r_x_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_y_offset">Origin Y</label>'+
-														'<input type="number" name="r_y_offset" class="form-control" value="' + q.r_y_offset + '">'+
+														'<input type="number" name="r_y_offset" class="form-control" value="' +r_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
 											'<button type="submit" class="btn btn-default">Submit</button>'+
 										'</form>'+
+									'</div>'+
+									'</div>'+
+									'<div class = "col-md-8">'+
+									'<div id="wrapper">'+
+										"<img src='/testpng.png' class='img-responsive' id='image2'/>"+
+										"<div id='generated_image'><img src='/generateTextLayer?" + qstring + "' class='img-responsive' id='image1' /></div>" +
+									'</div>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+

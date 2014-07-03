@@ -105,38 +105,29 @@ void TextGenerate::text_to_image(cairo_t *cr, Handle<Object> obj){
   int text_origin_x = obj->Get(String::New("m_x_offset"))->NumberValue();
   int text_origin_y = obj->Get(String::New("m_y_offset"))->NumberValue();
 
-  cout << text << endl;
-  cout << font << endl;
-  cout << font_color << endl;
-  cout << font_size << endl;
-  cout << text_width << endl;
-  cout << text_height << endl;
-  cout << text_origin_x << endl;
-  cout << text_origin_y << endl;
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
 
-  // draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  text = *(v8::String::Utf8Value (obj->Get(String::New("sender"))));
+  font = *(v8::String::Utf8Value (obj->Get(String::New("s_font"))));
+  font_color = *(v8::String::Utf8Value (obj->Get(String::New("s_font_color"))));
+  font_size = obj->Get(String::New("s_font_size"))->NumberValue();
+  text_width = obj->Get(String::New("s_width"))->NumberValue();
+  text_height = obj->Get(String::New("s_height"))->NumberValue();
+  text_origin_x = obj->Get(String::New("s_x_offset"))->NumberValue();
+  text_origin_y = obj->Get(String::New("s_y_offset"))->NumberValue();
 
-  // text = "Sender";
-  // font = "Alice";
-  // font_color = "ef5389";
-  // font_size = 16;
-  // text_width = 1137;
-  // text_height = 108;
-  // text_origin_x = 182;
-  // text_origin_y = 938;
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
 
-  // draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  text = *(v8::String::Utf8Value (obj->Get(String::New("recipient"))));
+  font = *(v8::String::Utf8Value (obj->Get(String::New("r_font"))));
+  font_color = *(v8::String::Utf8Value (obj->Get(String::New("r_font_color"))));
+  font_size = obj->Get(String::New("r_font_size"))->NumberValue();
+  text_width = obj->Get(String::New("r_width"))->NumberValue();
+  text_height = obj->Get(String::New("r_height"))->NumberValue();
+  text_origin_x = obj->Get(String::New("r_x_offset"))->NumberValue();
+  text_origin_y = obj->Get(String::New("r_y_offset"))->NumberValue();
 
-  // text = "Recipient";
-  // font = "Alice";
-  // font_color = "22ffff";
-  // font_size = 16;
-  // text_width = 1133;
-  // text_height = 98;
-  // text_origin_x = 182;
-  // text_origin_y = 461;
-
-  // draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
 
 }
 
@@ -166,9 +157,9 @@ void TextGenerate::draw_text(cairo_t *cr, string text, string font, string font_
   pango_cairo_context_set_resolution (pango_layout_get_context (layout), 300);
 
   //make the white box
-  cairo_set_source_rgb (cr, 1, 1, 1);
-  cairo_rectangle(cr, text_origin_x, text_origin_y, text_width, text_height);
-  cairo_fill (cr);
+  // cairo_set_source_rgb (cr, 1, 1, 1);
+  // cairo_rectangle(cr, text_origin_x, text_origin_y, text_width, text_height);
+  // cairo_fill (cr);
 
   //set font description to layout
   desc = pango_font_description_from_string (font.c_str());
