@@ -17,7 +17,6 @@ http.createServer(function (req, res) {
 		var params = urlLib.parse(req.url,true);
 	    q = params.query;
 
-
     	message = (q.message) ? q.message : "This is a message";
     	m_font = (q.m_font) ? q.m_font : "Alice";
     	m_font_color = (q.m_font_color) ? q.m_font_color : "ef5389";
@@ -26,6 +25,7 @@ http.createServer(function (req, res) {
     	m_font_size = (q.m_font_size) ? q.m_font_size : "17";
     	m_x_offset = (q.m_x_offset) ? q.m_x_offset : "182";
     	m_y_offset = (q.m_y_offset) ? q.m_y_offset : "577";
+    	m_gravity = (q.m_gravity) ? q.m_gravity : "Left";
 
     	sender = (q.sender) ? q.sender : "Sender";
     	s_font = (q.s_font) ? q.s_font : "Alice";
@@ -35,6 +35,7 @@ http.createServer(function (req, res) {
     	s_font_size = (q.s_font_size) ? q.s_font_size : "16";
     	s_x_offset = (q.s_x_offset) ? q.s_x_offset : "182";
     	s_y_offset = (q.s_y_offset) ? q.s_y_offset : "938";
+    	s_gravity = (q.s_gravity) ? q.s_gravity : "Left";
 
     	recipient = (q.recipient) ? q.recipient : "Recipient";
     	r_font = (q.r_font) ? q.r_font : "Alice";
@@ -44,7 +45,7 @@ http.createServer(function (req, res) {
     	r_font_size = (q.r_font_size) ? q.r_font_size : "16";
     	r_x_offset = (q.r_x_offset) ? q.r_x_offset : "182";
     	r_y_offset = (q.r_y_offset) ? q.r_y_offset : "461";
-
+    	r_gravity = (q.r_gravity) ? q.r_gravity : "Left";
 
 	    var values = { 
 	    	message: message,
@@ -55,6 +56,7 @@ http.createServer(function (req, res) {
 	    	m_font_size: m_font_size,
 	    	m_x_offset: m_x_offset,
 	    	m_y_offset: m_y_offset,
+	    	m_gravity: m_gravity,
 	    	recipient: recipient,
 	    	r_font: r_font,
 	    	r_font_color: r_font_color,
@@ -63,6 +65,7 @@ http.createServer(function (req, res) {
 	    	r_font_size: r_font_size,
 	    	r_x_offset: r_x_offset,
 	    	r_y_offset: r_y_offset,
+	    	r_gravity: r_gravity,
 	    	sender: sender,
 	    	s_font: s_font,
 	    	s_font_color: s_font_color,
@@ -70,7 +73,8 @@ http.createServer(function (req, res) {
 	    	s_height: s_height,
 	    	s_font_size: s_font_size,
 	    	s_x_offset: s_x_offset,
-	    	s_y_offset: s_y_offset
+	    	s_y_offset: s_y_offset,
+	    	s_gravity: s_gravity
 	    }
 	    //console.log(q.width);
 
@@ -93,7 +97,7 @@ http.createServer(function (req, res) {
 			'<div class="site-wrapper-inner">'+
 				'<div class="cover-container">'+
 					'<div class="inner cover">'+
-						'<h1 class="cover-heading">Text Generation Test Page</h1>'+
+						'<h1 class="cover-heading">Dennis</h1>'+
 						'<p class="lead">'+
 							'<div class= "container">'+
 								'<div class= "row">'+
@@ -146,6 +150,14 @@ http.createServer(function (req, res) {
 														'<label for="m_y_offset">Origin Y</label>'+
 														'<input type="number" name="m_y_offset" class="form-control" value="' + m_y_offset + '">'+
 													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_gravity">Alignment</label>'+
+														'<select name="m_gravity" class="form-control" id="m_gravity">'+
+														'<option selected="selected">Left</option>'+
+														'<option>Center</option>'+
+														'<option>Right</option>'+
+														'</select>'+
+													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="sender">'+
 													'<div class="form-group">'+
@@ -186,6 +198,14 @@ http.createServer(function (req, res) {
 													'<div class="form-group">'+
 														'<label for="s_y_offset">Origin Y</label>'+
 														'<input type="number" name="s_y_offset" class="form-control" value="' + s_y_offset + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_gravity">Alignment</label>'+
+														'<select name="s_gravity" class="form-control" id="s_gravity">'+
+														'<option selected="selected">Left</option>'+
+														'<option>Center</option>'+
+														'<option>Right</option>'+
+														'</select>'+
 													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="recipient">'+
@@ -228,9 +248,17 @@ http.createServer(function (req, res) {
 														'<label for="r_y_offset">Origin Y</label>'+
 														'<input type="number" name="r_y_offset" class="form-control" value="' +r_y_offset + '">'+
 													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_gravity">Alignment</label>'+
+														'<select name="r_gravity" class="form-control" id="r_gravity">'+
+														'<option selected="selected">Left</option>'+
+														'<option>Center</option>'+
+														'<option>Right</option>'+
+														'</select>'+
+													'</div>'+
 												'</div>'+
 											'</div>'+
-											'<button type="submit" class="btn btn-default">Submit</button>'+
+											//'<button type="submit" class="btn btn-default">Submit</button>'+
 										'</form>'+
 									'</div>'+
 									'</div>'+
@@ -271,18 +299,8 @@ http.createServer(function (req, res) {
 		        throw err; 
 		    }       
 		    
-			res.writeHeader(200, {"Content-Type": "text/css"});  // <-- HERE!
-			res.write(css);  // <-- HERE!
-			res.end();  
-		});
-	}else if(pathname ==="/testpng.png"){
-		fs.readFile('testpng.png', function (err, png) {
-		    if (err) {
-		        throw err; 
-		    }       
-		    
-			res.writeHeader(200, {"Content-Type": "image/png"});  // <-- HERE!
-			res.write(png);  // <-- HERE!
+			res.writeHeader(200, {"Content-Type": "text/css"});
+			res.write(css);
 			res.end();  
 		});
 	}else if(pathname ==="/custom.js"){
@@ -291,8 +309,18 @@ http.createServer(function (req, res) {
 		        throw err; 
 		    }       
 		    
-			res.writeHeader(200, {"Content-Type": "text/javascript"});  // <-- HERE!
-			res.write(js);  // <-- HERE!
+			res.writeHeader(200, {"Content-Type": "text/javascript"});
+			res.write(js);
+			res.end();  
+		});
+	}else if(pathname ==="/testpng.png"){
+		fs.readFile('testpng.png', function (err, png) {
+		    if (err) {
+		        throw err; 
+		    }       
+		    
+			res.writeHeader(200, {"Content-Type": "image/png"});
+			res.write(png);
 			res.end();  
 		});
 	}else{

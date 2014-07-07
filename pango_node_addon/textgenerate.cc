@@ -99,40 +99,44 @@ void TextGenerate::text_to_image(cairo_t *cr, Handle<Object> obj){
   std::string text(*(v8::String::Utf8Value (obj->Get(String::New("message")))));
   std::string font(*(v8::String::Utf8Value (obj->Get(String::New("m_font")))));
   std::string font_color(*(v8::String::Utf8Value (obj->Get(String::New("m_font_color")))));
+  std::string gravity(*(v8::String::Utf8Value (obj->Get(String::New("m_gravity")))));
   int font_size = obj->Get(String::New("m_font_size"))->NumberValue();//40;//args[2]->NumberValue();
   int text_width = obj->Get(String::New("m_width"))->NumberValue();
   int text_height = obj->Get(String::New("m_height"))->NumberValue();
   int text_origin_x = obj->Get(String::New("m_x_offset"))->NumberValue();
   int text_origin_y = obj->Get(String::New("m_y_offset"))->NumberValue();
 
-  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y, gravity);
 
   text = *(v8::String::Utf8Value (obj->Get(String::New("sender"))));
   font = *(v8::String::Utf8Value (obj->Get(String::New("s_font"))));
   font_color = *(v8::String::Utf8Value (obj->Get(String::New("s_font_color"))));
+  gravity = *(v8::String::Utf8Value (obj->Get(String::New("s_gravity"))));
   font_size = obj->Get(String::New("s_font_size"))->NumberValue();
   text_width = obj->Get(String::New("s_width"))->NumberValue();
   text_height = obj->Get(String::New("s_height"))->NumberValue();
   text_origin_x = obj->Get(String::New("s_x_offset"))->NumberValue();
   text_origin_y = obj->Get(String::New("s_y_offset"))->NumberValue();
 
-  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y, gravity);
 
   text = *(v8::String::Utf8Value (obj->Get(String::New("recipient"))));
   font = *(v8::String::Utf8Value (obj->Get(String::New("r_font"))));
   font_color = *(v8::String::Utf8Value (obj->Get(String::New("r_font_color"))));
+  gravity = *(v8::String::Utf8Value (obj->Get(String::New("r_gravity"))));
   font_size = obj->Get(String::New("r_font_size"))->NumberValue();
   text_width = obj->Get(String::New("r_width"))->NumberValue();
   text_height = obj->Get(String::New("r_height"))->NumberValue();
   text_origin_x = obj->Get(String::New("r_x_offset"))->NumberValue();
   text_origin_y = obj->Get(String::New("r_y_offset"))->NumberValue();
 
-  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y);
+  draw_text(cr, text, font, font_color, font_size, text_width, text_height, text_origin_x, text_origin_y, gravity);
 
 }
 
 void TextGenerate::draw_text(cairo_t *cr, string text, string font, string font_color, 
-                        int font_size, int text_width, int text_height, int text_origin_x, int text_origin_y){
+                        int font_size, int text_width, int text_height, int text_origin_x, 
+                        int text_origin_y, string gravity){
 
   PangoLayout *layout;
   PangoFontDescription *desc;
@@ -150,8 +154,14 @@ void TextGenerate::draw_text(cairo_t *cr, string text, string font, string font_
   pango_layout_set_width(layout, text_width * PANGO_SCALE);
   pango_layout_set_height(layout, text_height * PANGO_SCALE);
   pango_layout_set_wrap(layout, PANGO_WRAP_WORD);
-  pango_layout_set_alignment(layout, PANGO_ALIGN_CENTER);
   pango_layout_set_text (layout, text.c_str() , -1);
+  if(gravity.compare("Left") == 0){
+    pango_layout_set_alignment(layout, PANGO_ALIGN_LEFT);
+  }else if(gravity.compare("Center") == 0){
+    pango_layout_set_alignment(layout, PANGO_ALIGN_CENTER);
+  }else if(gravity.compare("Right") == 0){
+    pango_layout_set_alignment(layout, PANGO_ALIGN_RIGHT);
+  }
 
   //dpi
   pango_cairo_context_set_resolution (pango_layout_get_context (layout), 300);
