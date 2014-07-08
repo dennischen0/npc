@@ -18,7 +18,7 @@ http.createServer(function (req, res) {
 	    q = params.query;
 
     	message = (q.message) ? q.message : "This is a message";
-    	m_font = (q.m_font) ? q.m_font : "Alice";
+    	m_font = (q.m_font) ? q.m_font : "Cookie";
     	m_font_color = (q.m_font_color) ? q.m_font_color : "ef5389";
     	m_width = (q.m_width) ? q.m_width : "1137";
     	m_height = (q.m_height) ? q.m_height : "345";
@@ -28,7 +28,7 @@ http.createServer(function (req, res) {
     	m_gravity = (q.m_gravity) ? q.m_gravity : "Left";
 
     	sender = (q.sender) ? q.sender : "Sender";
-    	s_font = (q.s_font) ? q.s_font : "Alice";
+    	s_font = (q.s_font) ? q.s_font : "Cookie";
     	s_font_color = (q.s_font_color) ? q.s_font_color : "ef5389";
     	s_width = (q.s_width) ? q.s_width : "1137";
     	s_height = (q.s_height) ? q.s_height : "108";
@@ -38,7 +38,7 @@ http.createServer(function (req, res) {
     	s_gravity = (q.s_gravity) ? q.s_gravity : "Left";
 
     	recipient = (q.recipient) ? q.recipient : "Recipient";
-    	r_font = (q.r_font) ? q.r_font : "Alice";
+    	r_font = (q.r_font) ? q.r_font : "Cookie";
     	r_font_color = (q.r_font_color) ? q.r_font_color : "ef5389";
     	r_width = (q.r_width) ? q.r_width : "1133";
     	r_height = (q.r_height) ? q.r_height : "98";
