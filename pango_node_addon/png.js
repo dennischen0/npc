@@ -286,7 +286,8 @@ http.createServer(function (req, res) {
 	}else if(pathname === "/generateTextLayer"){
 		//generateTextLayer?message=Heartfelt%20congratulations+to+you+and+your+babies.&font=Andika&width=400&height=50&font_size=40&origin_x=300&origin_y=200
 	    var params = urlLib.parse(req.url,true);
-	    //console.log(params.query);
+	    process.stdout.write(".");
+
 	    q = params.query;
 
 	    //var params = {query: {text: "test generate text"}};

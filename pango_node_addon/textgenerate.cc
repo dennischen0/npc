@@ -4,7 +4,6 @@
 
 
 #define MAX_SIZE 1500
-#define FONT "Cookie"
 
 using namespace v8;
 using namespace std;
