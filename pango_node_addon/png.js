@@ -11,7 +11,8 @@ http.createServer(function (req, res) {
 	//process.stdout.write(".");
     
 	var pathname = urlLib.parse(req.url).pathname;
-	//console.log(pathname);
+	//console.log("path: " + pathname);
+
 
 	if(pathname === "/"){
 		var params = urlLib.parse(req.url,true);
@@ -88,8 +89,11 @@ http.createServer(function (req, res) {
 		'<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">'+
 		'<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">'+
 		'<link rel="stylesheet" href="/custom.css">'+
+		'<link rel="stylesheet" href="/bootstrap-slider.css">'+
 		'<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>'+
 		'<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>'+
+				'<script src="/underscore-min.js"></script>'+
+				'<script src="/bootstrap-slider.js"></script>'+
 				'<script src="/custom.js"></script>'+
 		'</head>'+
 		'<body>'+
@@ -127,28 +131,8 @@ http.createServer(function (req, res) {
 														'</select>'+
 													'</div>'+
 													'<div class="form-group">'+
-														'<label for="m_font_size">Font Size</label>'+
-														'<input type="number" name="m_font_size" class="form-control" value="' + m_font_size + '">'+
-													'</div>'+
-													'<div class="form-group">'+
 														'<label for="m_font_color">Font Color</label>'+
 														'<input type="text" name="m_font_color" class="form-control" value="' + m_font_color + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="m_width">Width</label>'+
-														'<input type="number" name="m_width" class="form-control" value="' + m_width + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="m_height">Height</label>'+
-														'<input type="number" name="m_height" class="form-control" value="' + m_height + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="m_x_offset">Origin X</label>'+
-														'<input type="number" name="m_x_offset" class="form-control" value="' + m_x_offset + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="m_y_offset">Origin Y</label>'+
-														'<input type="number" name="m_y_offset" class="form-control" value="' + m_y_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_gravity">Alignment</label>'+
@@ -157,6 +141,26 @@ http.createServer(function (req, res) {
 														'<option>Center</option>'+
 														'<option>Right</option>'+
 														'</select>'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_font_size">Font Size</label>'+'<br>'+
+														'<input type="number" name="m_font_size" class="form-control" value="' + m_font_size + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_width">Width</label>'+'<br>'+
+														'<input type="number" name="m_width" class="form-control" value="' + m_width + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_height">Height</label>'+'<br>'+
+														'<input type="number" name="m_height" class="form-control" value="' + m_height + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_x_offset">Origin X</label>'+'<br>'+
+														'<input type="number" name="m_x_offset" class="form-control" value="' + m_x_offset + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="m_y_offset">Origin Y</label>'+'<br>'+
+														'<input type="number" name="m_y_offset" class="form-control" value="' + m_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="sender">'+
@@ -176,28 +180,8 @@ http.createServer(function (req, res) {
 														'</select>'+
 													'</div>'+
 													'<div class="form-group">'+
-														'<label for="s_font_size">Font Size</label>'+
-														'<input type="number" name="s_font_size" class="form-control" value="' + s_font_size + '">'+
-													'</div>'+
-													'<div class="form-group">'+
 														'<label for="s_font_color">Font Color</label>'+
 														'<input type="text" name="s_font_color" class="form-control" value="' + s_font_color + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="s_width">Width</label>'+
-														'<input type="number" name="s_width" class="form-control" value="' + s_width+ '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="s_height">Height</label>'+
-														'<input type="number" name="s_height" class="form-control" value="' + s_height +'">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="s_x_offset">Origin X</label>'+
-														'<input type="number" name="s_x_offset" class="form-control" value="' + s_x_offset + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="s_y_offset">Origin Y</label>'+
-														'<input type="number" name="s_y_offset" class="form-control" value="' + s_y_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_gravity">Alignment</label>'+
@@ -206,6 +190,26 @@ http.createServer(function (req, res) {
 														'<option>Center</option>'+
 														'<option>Right</option>'+
 														'</select>'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_font_size">Font Size</label>'+'<br>'+
+														'<input type="number" name="s_font_size" class="form-control" value="' + s_font_size + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_width">Width</label>'+'<br>'+
+														'<input type="number" name="s_width" class="form-control" value="' + s_width+ '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_height">Height</label>'+'<br>'+
+														'<input type="number" name="s_height" class="form-control" value="' + s_height +'">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_x_offset">Origin X</label>'+'<br>'+
+														'<input type="number" name="s_x_offset" class="form-control" value="' + s_x_offset + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="s_y_offset">Origin Y</label>'+'<br>'+
+														'<input type="number" name="s_y_offset" class="form-control" value="' + s_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 												'<div class="tab-pane" id="recipient">'+
@@ -225,28 +229,8 @@ http.createServer(function (req, res) {
 														'</select>'+
 													'</div>'+
 													'<div class="form-group">'+
-														'<label for="r_font_size">Font Size</label>'+
-														'<input type="number" name="r_font_size" class="form-control" value="' + r_font_size + '">'+
-													'</div>'+
-													'<div class="form-group">'+
 														'<label for="r_font_color">Font Color</label>'+
 														'<input type="text" name="r_font_color" class="form-control" value="' + r_font_color + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="r_width">Width</label>'+
-														'<input type="number" name="r_width" class="form-control" value="' + r_width+ '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="r_height">Height</label>'+
-														'<input type="number" name="r_height" class="form-control" value="' + r_height +'">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="r_x_offset">Origin X</label>'+
-														'<input type="number" name="r_x_offset" class="form-control" value="' + r_x_offset + '">'+
-													'</div>'+
-													'<div class="form-group">'+
-														'<label for="r_y_offset">Origin Y</label>'+
-														'<input type="number" name="r_y_offset" class="form-control" value="' +r_y_offset + '">'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_gravity">Alignment</label>'+
@@ -255,6 +239,26 @@ http.createServer(function (req, res) {
 														'<option>Center</option>'+
 														'<option>Right</option>'+
 														'</select>'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_font_size">Font Size</label>'+'<br>'+
+														'<input type="number" name="r_font_size" class="form-control" value="' + r_font_size + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_width">Width</label>'+'<br>'+
+														'<input type="number" name="r_width" class="form-control" value="' + r_width+ '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_height">Height</label>'+'<br>'+
+														'<input type="number" name="r_height" class="form-control" value="' + r_height +'">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_x_offset">Origin X</label>'+'<br>'+
+														'<input type="number" name="r_x_offset" class="form-control" value="' + r_x_offset + '">'+
+													'</div>'+
+													'<div class="form-group">'+
+														'<label for="r_y_offset">Origin Y</label>'+'<br>'+
+														'<input type="number" name="r_y_offset" class="form-control" value="' +r_y_offset + '">'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
@@ -294,40 +298,49 @@ http.createServer(function (req, res) {
 
 	    res.writeHead(200, {'Content-Type': 'image/png'});
 	    res.end(obj.generate(params.query));
-	}else if(pathname ==="/custom.css"){
-		fs.readFile('custom.css', function (err, css) {
-		    if (err) {
-		        throw err; 
-		    }       
-		    
-			res.writeHeader(200, {"Content-Type": "text/css"});
-			res.write(css);
-			res.end();  
-		});
-	}else if(pathname ==="/custom.js"){
-		fs.readFile('custom.js', function (err, js) {
-		    if (err) {
-		        throw err; 
-		    }       
-		    
-			res.writeHeader(200, {"Content-Type": "text/javascript"});
-			res.write(js);
-			res.end();  
-		});
-	}else if(pathname ==="/testpng.png"){
-		fs.readFile('testpng.png', function (err, png) {
-		    if (err) {
-		        throw err; 
-		    }       
-		    
-			res.writeHeader(200, {"Content-Type": "image/png"});
-			res.write(png);
-			res.end();  
-		});
 	}else{
-		res.writeHead(404, {"Content-Type": "text/plain"});
-		res.write("404 Not found");
-		res.end();
+
+
+		var filename = pathname.substring(pathname.lastIndexOf('/')+1);
+		//console.log(filename);
+		var fileext = pathname.substring(pathname.lastIndexOf('.')+1);
+		//console.log(fileext);
+
+		if(fileext === "css"){
+			fs.readFile('css/' + filename, function (err, css) {
+			    if (err) {
+			        throw err; 
+			    }       
+			    
+				res.writeHeader(200, {"Content-Type": "text/css"});
+				res.write(css);
+				res.end();  
+			});
+		}else if(fileext === "js"){
+			fs.readFile('js/' + filename, function (err, js) {
+			    if (err) {
+			        throw err; 
+			    }       
+			    
+				res.writeHeader(200, {"Content-Type": "text/javascript"});
+				res.write(js);
+				res.end();  
+			});
+		}else if(pathname ==="/testpng.png"){
+			fs.readFile('testpng.png', function (err, png) {
+			    if (err) {
+			        throw err; 
+			    }       
+			    
+				res.writeHeader(200, {"Content-Type": "image/png"});
+				res.write(png);
+				res.end();  
+			});
+		}else{
+			res.writeHead(404, {"Content-Type": "text/plain"});
+			res.write("404 Not found");
+			res.end();
+		}
 	}
 	//localhost:3000/
 	//for get request
