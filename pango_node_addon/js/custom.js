@@ -5,6 +5,12 @@ $(document).ready(function() {
 	$('.form-control').change(function(){
 		ReplaceImage();
 	})
+	$('.color').colorpicker({
+		format: 'hex',
+		color: '#ef5389',
+	}).on('changeColor', function(ev){
+		updateValsWithDelay(ev);
+	});
 	$( "input[name='m_width']" ).slider({
 		min: '0',
 		max: '1500',
@@ -192,7 +198,7 @@ function ReplaceImage(){
 		 var values = { 
 	    	message: $('textarea[name="message"]').val(),
 	    	m_font: $('select[name="m_font"]').val(),
-	    	m_font_color: $('input[name="m_font_color"]').val(),
+	    	m_font_color: $('input[name="m_font_color"]').val().replace(/^.*#/, ''),
 	    	m_width: $('input[name="m_width"]').val(),
 	    	m_height: $('input[name="m_height"]').val(),
 	    	m_font_size: $('input[name="m_font_size"]').val(),
@@ -201,7 +207,7 @@ function ReplaceImage(){
 	    	m_gravity: $('select[name="m_gravity"]').val(),
 	    	recipient: $('input[name="recipient"]').val(),
 	    	r_font: $('select[name="r_font"]').val(),
-	    	r_font_color: $('input[name="r_font_color"]').val(),
+	    	r_font_color: $('input[name="r_font_color"]').val().replace(/^.*#/, ''),
 	    	r_width: $('input[name="r_width"]').val(),
 	    	r_height: $('input[name="r_height"]').val(),
 	    	r_font_size: $('input[name="r_font_size"]').val(),
@@ -210,7 +216,7 @@ function ReplaceImage(){
 	    	r_gravity: $('select[name="r_gravity"]').val(),
 	    	sender: $('input[name="sender"]').val(),
 	    	s_font: $('select[name="s_font"]').val(),
-	    	s_font_color: $('input[name="s_font_color"]').val(),
+	    	s_font_color: $('input[name="s_font_color"]').val().replace(/^.*#/, ''),
 	    	s_width: $('input[name="s_width"]').val(),
 	    	s_height: $('input[name="s_height"]').val(),
 	    	s_font_size: $('input[name="s_font_size"]').val(),

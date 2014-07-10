@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
 
     	message = (q.message) ? q.message : "This is a message";
     	m_font = (q.m_font) ? q.m_font : "Cookie";
-    	m_font_color = (q.m_font_color) ? q.m_font_color : "ef5389";
+    	m_font_color = (q.m_font_color) ? q.m_font_color : "#ef5389";
     	m_width = (q.m_width) ? q.m_width : "1137";
     	m_height = (q.m_height) ? q.m_height : "345";
     	m_font_size = (q.m_font_size) ? q.m_font_size : "17";
@@ -30,7 +30,7 @@ http.createServer(function (req, res) {
 
     	sender = (q.sender) ? q.sender : "Sender";
     	s_font = (q.s_font) ? q.s_font : "Cookie";
-    	s_font_color = (q.s_font_color) ? q.s_font_color : "ef5389";
+    	s_font_color = (q.s_font_color) ? q.s_font_color : "#ef5389";
     	s_width = (q.s_width) ? q.s_width : "1137";
     	s_height = (q.s_height) ? q.s_height : "108";
     	s_font_size = (q.s_font_size) ? q.s_font_size : "16";
@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
 
     	recipient = (q.recipient) ? q.recipient : "Recipient";
     	r_font = (q.r_font) ? q.r_font : "Cookie";
-    	r_font_color = (q.r_font_color) ? q.r_font_color : "ef5389";
+    	r_font_color = (q.r_font_color) ? q.r_font_color : "#ef5389";
     	r_width = (q.r_width) ? q.r_width : "1133";
     	r_height = (q.r_height) ? q.r_height : "98";
     	r_font_size = (q.r_font_size) ? q.r_font_size : "16";
@@ -90,12 +90,15 @@ http.createServer(function (req, res) {
 		'<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">'+
 		'<link rel="stylesheet" href="/custom.css">'+
 		'<link rel="stylesheet" href="/bootstrap-slider.css">'+
+		'<link rel="stylesheet" href="/bootstrap-colorpicker.css">'+
+
 		'<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>'+
 		'<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>'+
-				'<script src="/underscore-min.js"></script>'+
-				'<script src="/bootstrap-slider.js"></script>'+
-				'<script src="/custom.js"></script>'+
-				'<script src="/ipsum.js"></script>'+
+		'<script src="/bootstrap-slider.js"></script>'+
+		'<script src="/bootstrap-colorpicker.js"></script>'+
+		'<script src="/custom.js"></script>'+
+		'<script src="/ipsum.js"></script>'+
+
 		'</head>'+
 		'<body>'+
 		'<div class="site-wrapper">'+
@@ -134,7 +137,10 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_font_color">Font Color</label>'+
-														'<input type="text" name="m_font_color" class="form-control" value="' + m_font_color + '">'+
+														'<div class="input-group color">'+
+															'<input type="text" name="m_font_color" class="form-control" value="' + m_font_color + '">'+
+															'<span class="input-group-addon"><i></i></span>'+
+														'</div>'+
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="m_gravity">Alignment</label>'+
@@ -183,7 +189,10 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_font_color">Font Color</label>'+
-														'<input type="text" name="s_font_color" class="form-control" value="' + s_font_color + '">'+
+														'<div class="input-group color">'+
+															'<input type="text" name="s_font_color" class="form-control" value="' + s_font_color + '">'+
+															'<span class="input-group-addon"><i></i></span>'+
+														'</div>'+													
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="s_gravity">Alignment</label>'+
@@ -232,7 +241,10 @@ http.createServer(function (req, res) {
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_font_color">Font Color</label>'+
-														'<input type="text" name="r_font_color" class="form-control" value="' + r_font_color + '">'+
+														'<div class="input-group color">'+
+															'<input type="text" name="r_font_color" class="form-control" value="' + r_font_color + '">'+
+															'<span class="input-group-addon"><i></i></span>'+
+														'</div>'+													
 													'</div>'+
 													'<div class="form-group">'+
 														'<label for="r_gravity">Alignment</label>'+
@@ -328,8 +340,8 @@ http.createServer(function (req, res) {
 				res.write(js);
 				res.end();  
 			});
-		}else if(pathname ==="/testpng.png"){
-			fs.readFile('testpng.png', function (err, png) {
+		}else if(fileext === "png"){
+			fs.readFile('img/' + filename, function (err, png) {
 			    if (err) {
 			        throw err; 
 			    }       
