@@ -95,6 +95,7 @@ http.createServer(function (req, res) {
 				'<script src="/underscore-min.js"></script>'+
 				'<script src="/bootstrap-slider.js"></script>'+
 				'<script src="/custom.js"></script>'+
+				'<script src="/ipsum.js"></script>'+
 		'</head>'+
 		'<body>'+
 		'<div class="site-wrapper">'+
@@ -116,7 +117,8 @@ http.createServer(function (req, res) {
 											'<div class="tab-content">'+
 												'<div class="tab-pane active" id="message">'+
 													'<div class="form-group">'+
-														'<label for="message">Message</label>'+
+														'<label for="message">Message    </label>'+
+														'<button type="button" id="ipsum" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-star"></span> ipsum</button>'+
 														'<textarea name="message" class="form-control" placeholder="Enter message">'+message+'</textarea>'+
 													'</div>'+
 													'<div class="form-group">'+

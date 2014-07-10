@@ -157,6 +157,10 @@ $(document).ready(function() {
 			return val;
 		}
 	});
+	$('#ipsum').click(function(){
+		$('textarea[name="message"]').lorem({type: 'paragraphs', amount:'2', ptags:false})
+		ReplaceImage();
+	})
 
 });
 
