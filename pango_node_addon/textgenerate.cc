@@ -166,9 +166,9 @@ void TextGenerate::draw_text(cairo_t *cr, string text, string font, string font_
   pango_cairo_context_set_resolution (pango_layout_get_context (layout), 300);
 
   //make the white box
-  cairo_set_source_rgb (cr, 1, 1, 1);
-  cairo_rectangle(cr, text_origin_x, text_origin_y, text_width, text_height);
-  cairo_fill (cr);
+  // cairo_set_source_rgb (cr, 1, 1, 1);
+  // cairo_rectangle(cr, text_origin_x, text_origin_y, text_width, text_height);
+  // cairo_fill (cr);
 
   //set font description to layout
   desc = pango_font_description_from_string (font.c_str());
